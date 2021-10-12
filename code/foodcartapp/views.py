@@ -21,7 +21,7 @@ def banners_list_api(request):
             'title': 'New York',
             'src': static('tasty.jpg'),
             'text': 'Food is incomplete without a tasty dessert',
-        }
+        },
     ], safe=False, json_dumps_params={
         'ensure_ascii': False,
         'indent': 4,
@@ -47,7 +47,7 @@ def product_list_api(request):
             'restaurant': {
                 'id': product.id,
                 'name': product.name,
-            }
+            },
         }
         dumped_products.append(dumped_product)
     return JsonResponse(dumped_products, safe=False, json_dumps_params={

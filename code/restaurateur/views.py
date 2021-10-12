@@ -14,15 +14,15 @@ class Login(forms.Form):
         label='Логин', max_length=75, required=True,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Укажите имя пользователя'
-        })
+            'placeholder': 'Укажите имя пользователя',
+        }),
     )
     password = forms.CharField(
         label='Пароль', max_length=75, required=True,
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Введите пароль'
-        })
+            'placeholder': 'Введите пароль',
+        }),
     )
 
 
@@ -30,7 +30,7 @@ class LoginView(View):
     def get(self, request, *args, **kwargs):
         form = Login()
         return render(request, 'login.html', context={
-            'form': form
+            'form': form,
         })
 
     def post(self, request):
@@ -49,7 +49,7 @@ class LoginView(View):
 
         return render(request, 'login.html', context={
             'form': form,
-            'ivalid': True,
+            'invalid': True,
         })
 
 
@@ -72,12 +72,14 @@ def view_products(request):
 
         availability = {
             **default_availability,
-            **{item.restaurant_id: item.availability for item in product.menu_items.all()},
+            **{item.restaurant_id: item.availability for item in product.menu_items.all()},  # noqa: E501
         }
-        orderer_availability = [availability[restaurant.id] for restaurant in restaurants]
+        orderer_availability = [
+            availability[restaurant.id] for restaurant in restaurants
+        ]
 
         products_with_restaurants.append(
-            (product, orderer_availability)
+            (product, orderer_availability),
         )
 
     return render(request, template_name='products_list.html', context={

@@ -5,7 +5,7 @@ from django.db import models
 class Restaurant(models.Model):
     name = models.CharField(
         'название',
-        max_length=50
+        max_length=50,
     )
     address = models.CharField(
         'адрес',
@@ -39,7 +39,7 @@ class ProductQuerySet(models.QuerySet):
 class ProductCategory(models.Model):
     name = models.CharField(
         'название',
-        max_length=50
+        max_length=50,
     )
 
     class Meta:
@@ -53,7 +53,7 @@ class ProductCategory(models.Model):
 class Product(models.Model):
     name = models.CharField(
         'название',
-        max_length=50
+        max_length=50,
     )
     category = models.ForeignKey(
         ProductCategory,
@@ -67,11 +67,9 @@ class Product(models.Model):
         'цена',
         max_digits=8,
         decimal_places=2,
-        validators=[MinValueValidator(0)]
+        validators=[MinValueValidator(0)],
     )
-    image = models.ImageField(
-        'картинка'
-    )
+    image = models.ImageField('картинка')
     special_status = models.BooleanField(
         'спец.предложение',
         default=False,
@@ -109,14 +107,14 @@ class RestaurantMenuItem(models.Model):
     availability = models.BooleanField(
         'в продаже',
         default=True,
-        db_index=True
+        db_index=True,
     )
 
     class Meta:
         verbose_name = 'пункт меню ресторана'
         verbose_name_plural = 'пункты меню ресторана'
         unique_together = [
-            ['restaurant', 'product']
+            ['restaurant', 'product'],
         ]
 
     def __str__(self):
