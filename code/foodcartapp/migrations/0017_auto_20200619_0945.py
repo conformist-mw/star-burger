@@ -4,7 +4,7 @@ from django.db import migrations
 
 
 def fill_new_admin_field(apps, schema_editor):
-    Restaurant = apps.get_model("foodcartapp", "Restaurant")
+    Restaurant = apps.get_model('foodcartapp', 'Restaurant')
     for restaurant in Restaurant.objects.all():
         restaurant.new_admin = restaurant.admin.user
         restaurant.save()

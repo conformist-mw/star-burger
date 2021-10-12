@@ -4,7 +4,7 @@ from django.db import migrations
 
 
 def fill_city_field(apps, schema_editor):
-    Hotel = apps.get_model("foodcartapp", "Hotel")
+    Hotel = apps.get_model('foodcartapp', 'Hotel')
     for hotel in Hotel.objects.all():
         hotel.city = hotel.location.city
         hotel.save()
