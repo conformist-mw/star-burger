@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.templatetags.static import static
 
-
 from .models import Product
 
 
