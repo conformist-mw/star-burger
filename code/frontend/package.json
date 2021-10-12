@@ -16,5 +16,8 @@
     "react-transition-group": "^4.4.1",
     "regenerator": "^0.14.7",
     "resolve": "^1.20.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0-rc.0"
   }
 }

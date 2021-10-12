@@ -1,6 +1,7 @@
-bundles/**
+code/frontend/bundles/**
 node_modules/
 media/
+db.sqlite
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
