@@ -23,7 +23,9 @@ DEFAULT_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRDPARTY_APPS = []
+THIRDPARTY_APPS = [
+    'phonenumber_field',
+]
 
 PROJECT_APPS = [
     'foodcartapp.apps.FoodcartappConfig',
