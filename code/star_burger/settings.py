@@ -24,6 +24,7 @@ DEFAULT_APPS = [
 ]
 
 THIRDPARTY_APPS = [
+    'rest_framework',
     'phonenumber_field',
 ]
 
