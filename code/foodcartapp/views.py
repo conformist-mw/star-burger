@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.templatetags.static import static
 from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Product
 from .serializers import OrderSerializer
@@ -60,3 +61,4 @@ def product_list_api(request):
 
 class OrderCreateAPIView(CreateAPIView):
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]

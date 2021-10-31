@@ -1,5 +1,9 @@
 from phonenumber_field.serializerfields import PhoneNumberField
-from rest_framework.serializers import CharField, ModelSerializer
+from rest_framework.serializers import (
+    CharField,
+    ModelSerializer,
+    ValidationError,
+)
 
 from .models import Order, OrderProduct
 
@@ -26,6 +30,10 @@ class OrderSerializer(ModelSerializer):
 
     def create(self, validated_data):
         products = validated_data.pop('products')
+        if not products:
+            raise ValidationError(
+                {'products': 'Это поле не может быть пустым.'},
+            )
         order = Order.objects.create(**validated_data)
         for product in products:
             OrderProduct.objects.create(order=order, **product)
