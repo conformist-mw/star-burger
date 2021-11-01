@@ -9,7 +9,7 @@ from foodcartapp.models import Product
 
 
 @pytest.fixture(scope='session')
-def django_db_setup(django_db_setup, django_db_blocker):
+def django_db_setup(django_db_setup, django_db_blocker):  # noqa: PT004
     with django_db_blocker.unblock():
         call_command('loaddata', 'burgers.json')
 
