@@ -1,0 +1,205 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$nNJttHrCxu5BeOKkh4lVLE$rOu75v4hkLi3ej3vKug8pf+1s+wa0zqJEuo0GuqX2UM=",
+    "last_login": "2021-10-29T10:25:45.934Z",
+    "is_superuser": true,
+    "username": "user",
+    "first_name": "first_name",
+    "last_name": "last_name",
+    "email": "email@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-28T15:00:45.771Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "foodcartapp.productcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Бургер"
+  }
+},
+{
+  "model": "foodcartapp.productcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Ролл"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Стейкхаус",
+    "category": 1,
+    "price": "269.00",
+    "image": "steak.jpg",
+    "special_status": false,
+    "description": "Стейкхаус – это сочетание нашей фирменной, приготовленной на огне 100% говядины с ломтиками бекона и соусом «Барбекю», майонезом, листьями свежего салата, помидором и хрустящим луком на воздушной булочке, посыпанной кукурузной крошкой."
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Лонг Чизбургер",
+    "category": 1,
+    "price": "219.00",
+    "image": "long_chiz.jpg",
+    "special_status": false,
+    "description": "Лонг Чизбургер – эталон в коллекции чизбургеров! Два приготовленных на огне бифштекса с двумя ломтиками слегка расплавленного сыра, хрустящими огурчиками и кетчупом на длинной подрумяненной булочке."
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "Тройной Воппер",
+    "category": 1,
+    "price": "369.00",
+    "image": "triple_vopper.jpg",
+    "special_status": false,
+    "description": "ВОППЕР® — это вкуснейшая приготовленная на огне 100% говядина с сочными помидорами, свежим нарезанным листовым салатом, густым майонезом, хрустящими маринованными огурчиками на нежной булочке."
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "Беконайзер",
+    "category": 1,
+    "price": "319.00",
+    "image": "beconizer.jpg",
+    "special_status": false,
+    "description": "Встречай самый внушительный бургер в коллекции Бургер Кинг. Много мяса, много бекона и много сыра - все, как ты любишь, и ничего лишнего!"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 5,
+  "fields": {
+    "name": "Фиш Ролл",
+    "category": 2,
+    "price": "199.00",
+    "image": "fish_roll.jpg",
+    "special_status": false,
+    "description": "Наш новый ролл с аппетитной котлеткой из филе белой рыбы, с фирменным соусом, маринованными огурчиками и хрустящим салатом. Легкое рыбное удовольствие!"
+  }
+},
+{
+  "model": "foodcartapp.product",
+  "pk": 6,
+  "fields": {
+    "name": "Шримп Ролл",
+    "category": 2,
+    "price": "209.00",
+    "image": "shrimp_roll.jpg",
+    "special_status": false,
+    "description": "Легкий ролл с нежными королевскими креветками в хрустящей панировке, свежий салат Айсберг и ломтик сыра в пшеничной лепешке под фирменным соусом «Кинг». Блюдо содержит аллергены – морепродукты."
+  }
+},
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 1,
+  "fields": {
+    "name": "Star Burger Арбат",
+    "address": "Москва, ул. Новый Арбат, 15",
+    "contact_phone": "+7 (967) 157-44-13"
+  }
+},
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 2,
+  "fields": {
+    "name": "Star Burger Цветной",
+    "address": "Москва, Цветной бульвар, 11с2",
+    "contact_phone": "+7 (929) 949-55-36"
+  }
+},
+{
+  "model": "foodcartapp.restaurant",
+  "pk": 3,
+  "fields": {
+    "name": "Star Burger Европейский",
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "contact_phone": "+7 (929) 680-47-58"
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 1,
+  "fields": {
+    "restaurant": 1,
+    "product": 6,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 2,
+  "fields": {
+    "restaurant": 2,
+    "product": 6,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 3,
+  "fields": {
+    "restaurant": 3,
+    "product": 6,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 4,
+  "fields": {
+    "restaurant": 1,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 5,
+  "fields": {
+    "restaurant": 2,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 6,
+  "fields": {
+    "restaurant": 3,
+    "product": 3,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 7,
+  "fields": {
+    "restaurant": 1,
+    "product": 2,
+    "availability": true
+  }
+},
+{
+  "model": "foodcartapp.restaurantmenuitem",
+  "pk": 8,
+  "fields": {
+    "restaurant": 2,
+    "product": 2,
+    "availability": true
+  }
+}
+]
