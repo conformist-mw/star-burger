@@ -19,7 +19,17 @@ def test_empty_body(auth_client):
     assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
-@pytest.mark.parametrize('products', [None, 'string', []])
+@pytest.mark.parametrize(
+    'products',
+    [
+        [],
+        None,
+        'string',
+        [{'product': 9999, 'quantity': 1}],
+        [{'product': 'not a product', 'quantity': 1}],
+        [{'product': -1, 'quantity': 1}],
+    ],
+)
 def test_order_with_wrong_products(auth_client, order, products):
     order['products'] = products
     response = auth_client.post(API_ENDPOINT, data=order)
