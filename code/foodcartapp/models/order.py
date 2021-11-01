@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import MinValueValidator
+
 from phonenumber_field.modelfields import PhoneNumberField
 
 from .product import Product
@@ -45,7 +47,12 @@ class OrderProduct(models.Model):
         related_name='ordered_products',
         on_delete=models.CASCADE,
     )
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    price = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        default=0,
+        validators=[MinValueValidator(0)],
+    )
     quantity = models.PositiveSmallIntegerField('Количество', default=0)
 
     objects = OrderProductManager()
