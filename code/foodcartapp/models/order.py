@@ -45,6 +45,7 @@ class OrderProduct(models.Model):
         related_name='ordered_products',
         on_delete=models.CASCADE,
     )
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     quantity = models.PositiveSmallIntegerField('Количество', default=0)
 
     objects = OrderProductManager()
