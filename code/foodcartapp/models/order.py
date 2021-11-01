@@ -1,6 +1,5 @@
-from django.db import models
 from django.core.validators import MinValueValidator
-
+from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from .product import Product
