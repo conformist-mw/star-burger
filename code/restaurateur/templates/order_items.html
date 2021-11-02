@@ -21,6 +21,7 @@
       <th>Адрес доставки</th>
       <th>Сумма</th>
       <th>Комментарий</th>
+      <th>Рестораны</th>
       <th>Редактировать</th>
     </tr>
 
@@ -34,6 +35,16 @@
         <td>{{ item.address }}</td>
         <td>{{ item.total_sum }}</td>
         <td>{{ item.comment }}</td>
+        <td>
+          <details>
+            <summary>Рестораны</summary>
+            <ul>
+              {% for restaurant in item.restaurants %}
+                <li>{{ restaurant.name }}</li>
+              {% endfor %}
+            </ul>
+          </details>
+        </td>
         <td>
           <a href="{% url 'admin:foodcartapp_order_change' item.id %}">ред.</a>
         </td>

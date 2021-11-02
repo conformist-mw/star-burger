@@ -23,3 +23,16 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_products(self):
+        return self.menu_items.values_list('product_id', flat=True)
+
+    @staticmethod
+    def get_products_map() -> dict['Restaurant', set]:
+        return {
+            restaurant: set(
+                item.product_id for item in restaurant.menu_items.all()
+                if item.availability is True
+            )
+            for restaurant in Restaurant.objects.prefetch_related('menu_items')
+        }
