@@ -24,10 +24,12 @@ class Order(models.Model):
 
     PROCESSED = 'processed'
     UNPROCESSED = 'unprocessed'
+    # CANCELLED = 'cancelled'
 
     STATUSES = (
         (PROCESSED, 'Обработан'),
         (UNPROCESSED, 'Необработан'),
+        # (CANCELLED, 'Отменён'),
     )
 
     first_name = models.CharField('Имя', max_length=50)
@@ -38,6 +40,10 @@ class Order(models.Model):
         'Статус', max_length=15, choices=STATUSES, default=UNPROCESSED,
     )
     comment = models.TextField('Комментарий', blank=True)
+
+    created_at = models.DateTimeField('Создан', auto_now_add=True)
+    processed_at = models.DateTimeField('Обработан', blank=True, null=True)
+    delivered_at = models.DateTimeField('Доставлен', blank=True, null=True)
 
     objects = OrderManager()
 

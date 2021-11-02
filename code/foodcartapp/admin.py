@@ -24,6 +24,18 @@ class OrderAdmin(admin.ModelAdmin):
         OrderProductInline,
     ]
     list_display = ['id', 'status', 'first_name', 'last_name', 'address']
+    readonly_fields = ['created_at']
+
+    fieldsets = (
+        ('Основные данные', {
+            'fields': (('first_name', 'last_name'), 'phone', 'address'),
+        }),
+        ('Статус', {'fields': ('status',)}),
+        ('Комментарий', {'fields': ('comment',)}),
+        (None, {
+            'fields': ('created_at', 'processed_at', 'delivered_at'),
+        }),
+    )
 
     def response_post_save_change(self, request, obj):
         return redirect(reverse('restaurateur:view_orders'))
