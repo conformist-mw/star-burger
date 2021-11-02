@@ -27,7 +27,7 @@ class Order(models.Model):
 
     STATUSES = (
         (PROCESSED, 'Обработан'),
-        (UNPROCESSED, 'Необработан')
+        (UNPROCESSED, 'Необработан'),
     )
 
     first_name = models.CharField('Имя', max_length=50)
@@ -37,6 +37,7 @@ class Order(models.Model):
     status = models.CharField(
         'Статус', max_length=15, choices=STATUSES, default=UNPROCESSED,
     )
+    comment = models.TextField('Комментарий', blank=True)
 
     objects = OrderManager()
 
