@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.shortcuts import reverse
+from django.shortcuts import reverse, redirect
 from django.templatetags.static import static
 from django.utils.html import format_html
 
@@ -23,6 +23,10 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [
         OrderProductInline,
     ]
+    list_display = ['id', 'first_name', 'last_name', 'address']
+
+    def response_post_save_change(self, request, obj):
+        return redirect(reverse('restaurateur:view_orders'))
 
 
 class RestaurantMenuItemInline(admin.TabularInline):
