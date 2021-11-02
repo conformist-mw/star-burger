@@ -30,7 +30,7 @@ class OrderAdmin(admin.ModelAdmin):
         ('Основные данные', {
             'fields': (('first_name', 'last_name'), 'phone', 'address'),
         }),
-        ('Статус', {'fields': (('status', 'payment'),)}),
+        ('Статус', {'fields': (('status', 'payment'), 'restaurant')}),
         ('Комментарий', {'fields': ('comment',)}),
         (None, {
             'fields': ('created_at', 'processed_at', 'delivered_at'),

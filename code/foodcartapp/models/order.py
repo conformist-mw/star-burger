@@ -3,6 +3,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from .product import Product
+from .restaurant import Restaurant
 
 
 class OrderManager(models.Manager):
@@ -24,12 +25,12 @@ class Order(models.Model):
 
     PROCESSED = 'processed'
     UNPROCESSED = 'unprocessed'
-    # CANCELLED = 'cancelled'
+    CANCELLED = 'cancelled'
 
     STATUSES = (
         (PROCESSED, 'Обработан'),
         (UNPROCESSED, 'Необработан'),
-        # (CANCELLED, 'Отменён'),
+        (CANCELLED, 'Отменён'),
     )
 
     CARD = 'card'
@@ -51,6 +52,15 @@ class Order(models.Model):
         'Оплата', max_length=10, choices=PAYMENTS, default=CASH,
     )
     comment = models.TextField('Комментарий', blank=True)
+
+    restaurant = models.ForeignKey(
+        to=Restaurant,
+        verbose_name='Ресторан для заказа',
+        related_name='orders',
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+    )
 
     created_at = models.DateTimeField('Создан', auto_now_add=True)
     processed_at = models.DateTimeField('Обработан', blank=True, null=True)
@@ -92,6 +102,7 @@ class OrderProduct(models.Model):
     class Meta:
         verbose_name = 'Элемент заказа'
         verbose_name_plural = 'Элементы заказа'
+        unique_together = ['order', 'product']
 
     def __str__(self):
         return self.product.name
