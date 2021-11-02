@@ -32,12 +32,23 @@ class Order(models.Model):
         # (CANCELLED, 'Отменён'),
     )
 
+    CARD = 'card'
+    CASH = 'cash'
+
+    PAYMENTS = (
+        (CARD, 'Картой'),
+        (CASH, 'Наличными'),
+    )
+
     first_name = models.CharField('Имя', max_length=50)
     last_name = models.CharField('Фамилия', max_length=50)
     address = models.TextField('Адрес')
     phone = PhoneNumberField('Номер Телефона')
     status = models.CharField(
         'Статус', max_length=15, choices=STATUSES, default=UNPROCESSED,
+    )
+    payment = models.CharField(
+        'Оплата', max_length=10, choices=PAYMENTS, default=CASH,
     )
     comment = models.TextField('Комментарий', blank=True)
 

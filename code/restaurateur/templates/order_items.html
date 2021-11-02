@@ -15,9 +15,12 @@
     <tr>
       <th>ID заказа</th>
       <th>Клиент</th>
+      <th>Статус</th>
+      <th>Оплата</th>
       <th>Телефон</th>
       <th>Адрес доставки</th>
       <th>Сумма</th>
+      <th>Комментарий</th>
       <th>Редактировать</th>
     </tr>
 
@@ -25,9 +28,12 @@
       <tr>
         <td>{{ item.id }}</td>
         <td>{{ item.first_name }} {{ item.last_name }}</td>
+        <td>{{ item.get_status_display }}</td>
+        <td>{{ item.get_payment_display }}</td>
         <td>{{ item.phone }}</td>
         <td>{{ item.address }}</td>
         <td>{{ item.total_sum }}</td>
+        <td>{{ item.comment }}</td>
         <td>
           <a href="{% url 'admin:foodcartapp_order_change' item.id %}">ред.</a>
         </td>
