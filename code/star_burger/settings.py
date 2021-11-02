@@ -30,6 +30,7 @@ THIRDPARTY_APPS = [
 
 PROJECT_APPS = [
     'foodcartapp.apps.FoodcartappConfig',
+    'places.apps.PlacesConfig',
     'restaurateur.apps.RestaurateurConfig',
 ]
 
@@ -121,8 +122,9 @@ USE_TZ = True
 
 INTERNAL_IPS = ['127.0.0.1', 'localhost']
 
-
 STATICFILES_DIRS = [
     BASE_DIR / 'assets',
     BASE_DIR / 'frontend' / 'bundles',
 ]
+
+YANDEX_GEO_API_KEY = env('YANDEX_GEO_API_KEY')
