@@ -23,7 +23,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [
         OrderProductInline,
     ]
-    list_display = ['id', 'first_name', 'last_name', 'address']
+    list_display = ['id', 'status', 'first_name', 'last_name', 'address']
 
     def response_post_save_change(self, request, obj):
         return redirect(reverse('restaurateur:view_orders'))

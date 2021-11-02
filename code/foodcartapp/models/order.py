@@ -11,6 +11,9 @@ class OrderManager(models.Manager):
             'products__product',
         )
 
+    def unprocessed(self):
+        return super().get_queryset().filter(status=self.model.UNPROCESSED)
+
 
 class OrderProductManager(models.Manager):
     def get_queryset(self):
@@ -18,10 +21,22 @@ class OrderProductManager(models.Manager):
 
 
 class Order(models.Model):
+
+    PROCESSED = 'processed'
+    UNPROCESSED = 'unprocessed'
+
+    STATUSES = (
+        (PROCESSED, 'Обработан'),
+        (UNPROCESSED, 'Необработан')
+    )
+
     first_name = models.CharField('Имя', max_length=50)
     last_name = models.CharField('Фамилия', max_length=50)
     address = models.TextField('Адрес')
     phone = PhoneNumberField('Номер Телефона')
+    status = models.CharField(
+        'Статус', max_length=15, choices=STATUSES, default=UNPROCESSED,
+    )
 
     objects = OrderManager()
 
