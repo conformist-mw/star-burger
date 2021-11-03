@@ -2,8 +2,9 @@ from django.db import transaction
 from phonenumber_field.serializerfields import PhoneNumberField
 from rest_framework.serializers import CharField, ModelSerializer
 
-from .models import Order, OrderProduct
 from places.models import Place
+
+from .models import Order, OrderProduct
 
 
 class PlaceSerializer(ModelSerializer):

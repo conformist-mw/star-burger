@@ -1,7 +1,7 @@
 import requests
-
-from django.db import models
 from django.conf import settings
+from django.db import models
+from geopy import distance
 
 
 class Place(models.Model):
@@ -40,3 +40,8 @@ class Place(models.Model):
 
         self.lon, self.lat = most_relevant['GeoObject']['Point']['pos'].split(' ')  # noqa: E501
         self.save(update_fields=['lon', 'lat'])
+
+    def get_distance(self, place):
+        return round(
+            distance.distance((self.lat, self.lon), (place.lat, place.lon)).km,
+        )

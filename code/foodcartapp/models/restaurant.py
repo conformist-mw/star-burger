@@ -33,9 +33,13 @@ class Restaurant(models.Model):
     @staticmethod
     def get_products_map() -> dict['Restaurant', set]:
         return {
-            restaurant: set(
+            restaurant: {
                 item.product_id for item in restaurant.menu_items.all()
                 if item.availability is True
+            }
+            for restaurant in (
+                Restaurant.objects
+                .select_related('place')
+                .prefetch_related('menu_items')
             )
-            for restaurant in Restaurant.objects.prefetch_related('menu_items')
         }

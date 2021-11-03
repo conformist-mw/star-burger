@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 from django import forms
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import views as auth_views
@@ -8,6 +10,12 @@ from django.urls import reverse_lazy
 from django.views import View
 
 from foodcartapp.models import Order, Product, Restaurant
+
+
+@dataclass
+class RestaurantData:
+    restaurant: Restaurant
+    distance: float
 
 
 class Login(forms.Form):
@@ -100,7 +108,7 @@ def view_restaurants(request):
 def view_orders(request):
     orders = Order.objects.annotate(
         total_sum=Sum(F('products__price') * F('products__quantity')),
-    ).prefetch_related('products')
+    ).select_related('place').prefetch_related('products')
 
     restaurants_products = Restaurant.get_products_map()
 
@@ -109,7 +117,11 @@ def view_orders(request):
         product_ids = order.products.values_list('product_id', flat=True)
         for restaurant, products in restaurants_products.items():
             if products.issuperset(product_ids):
-                order.restaurants.append(restaurant)
+                restaurant_data = RestaurantData(
+                    restaurant=restaurant,
+                    distance=order.place.get_distance(restaurant.place),
+                )
+                order.restaurants.append(restaurant_data)
 
     return render(request, template_name='order_items.html', context={
         'order_items': orders,

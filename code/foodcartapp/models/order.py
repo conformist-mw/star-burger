@@ -3,6 +3,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from places.models import Place
+
 from .product import Product
 from .restaurant import Restaurant
 
