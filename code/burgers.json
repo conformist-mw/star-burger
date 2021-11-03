@@ -108,7 +108,7 @@
   "pk": 1,
   "fields": {
     "name": "Star Burger Арбат",
-    "address": "Москва, ул. Новый Арбат, 15",
+    "place": 5,
     "contact_phone": "+7 (967) 157-44-13"
   }
 },
@@ -117,7 +117,7 @@
   "pk": 2,
   "fields": {
     "name": "Star Burger Цветной",
-    "address": "Москва, Цветной бульвар, 11с2",
+    "place": 6,
     "contact_phone": "+7 (929) 949-55-36"
   }
 },
@@ -126,7 +126,7 @@
   "pk": 3,
   "fields": {
     "name": "Star Burger Европейский",
-    "address": "Москва, пл. Киевского Вокзала, 2",
+    "place": 7,
     "contact_phone": "+7 (929) 680-47-58"
   }
 },
@@ -200,6 +200,39 @@
     "restaurant": 2,
     "product": 2,
     "availability": true
+  }
+},
+  {
+  "model": "places.place",
+  "pk": 5,
+  "fields": {
+    "address": "Москва, ул. Новый Арбат, 15",
+    "lat": 55.752141,
+    "lon": 37.59242,
+    "created_at": "2021-11-03T21:08:53.276Z",
+    "updated_at": "2021-11-03T21:08:53.276Z"
+  }
+},
+{
+  "model": "places.place",
+  "pk": 6,
+  "fields": {
+    "address": "Москва, Цветной бульвар, 11с2",
+    "lat": 55.770076,
+    "lon": 37.620429,
+    "created_at": "2021-11-03T21:08:53.276Z",
+    "updated_at": "2021-11-03T21:08:53.276Z"
+  }
+},
+{
+  "model": "places.place",
+  "pk": 7,
+  "fields": {
+    "address": "Москва, пл. Киевского Вокзала, 2",
+    "lat": 55.744637,
+    "lon": 37.566072,
+    "created_at": "2021-11-03T21:08:53.277Z",
+    "updated_at": "2021-11-03T21:08:53.277Z"
   }
 }
 ]
