@@ -3,6 +3,7 @@ from django.shortcuts import redirect, reverse
 from django.templatetags.static import static
 from django.utils.html import format_html
 
+from places.models import Place
 from .models import (
     Order,
     OrderProduct,
@@ -28,7 +29,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Основные данные', {
-            'fields': (('first_name', 'last_name'), 'phone', 'address'),
+            'fields': (('first_name', 'last_name'), 'phone', 'address', 'place'),
         }),
         ('Статус', {'fields': (('status', 'payment'), 'restaurant')}),
         ('Комментарий', {'fields': ('comment',)}),
