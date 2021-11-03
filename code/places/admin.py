@@ -13,3 +13,4 @@ def set_coordinates(modeladmin, request, queryset):
 class PlaceAdmin(admin.ModelAdmin):
     actions = [set_coordinates]
     list_display = ['id', 'lon', 'lat', 'address']
+    readonly_fields = ['created_at', 'updated_at']

@@ -8,18 +8,11 @@ class Restaurant(models.Model):
         'название',
         max_length=50,
     )
-    address = models.CharField(
-        'адрес',
-        max_length=100,
-        blank=True,
-    )
     place = models.ForeignKey(
         to=Place,
         verbose_name='Адрес',
         related_name='restaurants',
         on_delete=models.CASCADE,
-        blank=True,
-        null=True,
     )
     contact_phone = models.CharField(
         'контактный телефон',

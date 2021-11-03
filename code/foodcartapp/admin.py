@@ -3,7 +3,6 @@ from django.shortcuts import redirect, reverse
 from django.templatetags.static import static
 from django.utils.html import format_html
 
-from places.models import Place
 from .models import (
     Order,
     OrderProduct,
@@ -24,12 +23,12 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [
         OrderProductInline,
     ]
-    list_display = ['id', 'status', 'first_name', 'last_name', 'address']
+    list_display = ['id', 'status', 'first_name', 'last_name']
     readonly_fields = ['created_at']
 
     fieldsets = (
         ('Основные данные', {
-            'fields': (('first_name', 'last_name'), 'phone', 'address', 'place'),
+            'fields': (('first_name', 'last_name'), 'phone', 'place'),
         }),
         ('Статус', {'fields': (('status', 'payment'), 'restaurant')}),
         ('Комментарий', {'fields': ('comment',)}),
@@ -51,12 +50,11 @@ class RestaurantMenuItemInline(admin.TabularInline):
 class RestaurantAdmin(admin.ModelAdmin):
     search_fields = [
         'name',
-        'address',
+        'place',
         'contact_phone',
     ]
     list_display = [
         'name',
-        'address',
         'contact_phone',
     ]
     inlines = [

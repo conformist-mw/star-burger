@@ -44,14 +44,11 @@ class Order(models.Model):
 
     first_name = models.CharField('Имя', max_length=50)
     last_name = models.CharField('Фамилия', max_length=50)
-    address = models.TextField('Адрес')
     place = models.ForeignKey(
         to=Place,
         verbose_name='Адрес',
         related_name='orders',
         on_delete=models.CASCADE,
-        blank=True,
-        null=True,
     )
     phone = PhoneNumberField('Номер Телефона')
     status = models.CharField(
