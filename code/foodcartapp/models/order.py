@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
+from places.models import Place
 from .product import Product
 from .restaurant import Restaurant
 
@@ -44,6 +45,14 @@ class Order(models.Model):
     first_name = models.CharField('Имя', max_length=50)
     last_name = models.CharField('Фамилия', max_length=50)
     address = models.TextField('Адрес')
+    place = models.ForeignKey(
+        to=Place,
+        verbose_name='Адрес',
+        related_name='orders',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
     phone = PhoneNumberField('Номер Телефона')
     status = models.CharField(
         'Статус', max_length=15, choices=STATUSES, default=UNPROCESSED,
