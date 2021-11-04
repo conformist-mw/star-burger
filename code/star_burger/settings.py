@@ -90,7 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'star_burger.wsgi.application'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'public'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

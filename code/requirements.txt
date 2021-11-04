@@ -3,5 +3,7 @@ django-environ==0.8.1
 django-phonenumber-field[phonenumbers]==5.2.0
 djangorestframework==3.12.4
 geopy==2.2.0
+gunicorn==20.1.0
 Pillow==8.4.0
 requests==2.26.0
+
