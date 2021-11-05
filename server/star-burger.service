@@ -1,6 +1,7 @@
 [Unit]
 Description=star-burger gunicorn daemon
-After=network.target
+After=network.target star-burger-db.service
+Requires=star-burger-db.service
 
 [Service]
 User=www-data

@@ -1,0 +1,12 @@
+[Unit]
+Description=star-burger database
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory=/home/website/star-burger
+ExecStart=/usr/bin/docker compose up
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
