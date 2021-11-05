@@ -5,5 +5,7 @@ djangorestframework==3.12.4
 geopy==2.2.0
 gunicorn==20.1.0
 Pillow==8.4.0
+psycopg2-binary==2.9.1
 requests==2.26.0
 rollbar==0.16.2
+

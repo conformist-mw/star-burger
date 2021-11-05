@@ -3,6 +3,7 @@ node_modules/
 media/
 db.sqlite
 code/public
+db-data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
